@@ -1,0 +1,17 @@
+targets:
+  - myhost1.local
+  - myhost2.local
+  - www.google.com
+
+dns:
+  refresh: 2m15s
+  nameserver: 192.168.5.1
+
+ping:
+  interval: 5s
+  timeout: 10s
+  history-size: 42
+  size: 120
+
+options:
+  disableIPv6: false
