@@ -27,7 +27,9 @@ sudo docker run --init -d -p 9427:9427 -v /home/ubuntu/ping_exporter/config.yml:
 Check the container is running:
 
 sudo docker ps
+
 curl localhost:9427
+
 (or open in Browser)
 
 ### Configure Prometheus using nano 
@@ -67,7 +69,7 @@ password = admin
 
 ### Create dashboard in grafana using UI
 
-Custom label
+Custom label:
 
 {{target}}
 
