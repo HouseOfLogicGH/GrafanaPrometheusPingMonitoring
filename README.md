@@ -3,7 +3,7 @@
 Basic Monitoring using ICMP / Ping for network devices
 
 ## Instructions
-These instructions accompany the [YouTube instructional video by House of Logic](https://youtu.be/).
+These instructions accompany the [YouTube instructional video by House of Logic](https://youtu.be/fnoTHoZzNSc).
 
 The Ping Exporter can be found [here.](https://github.com/czerwonk/ping_exporter)
 
