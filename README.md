@@ -13,33 +13,44 @@ The Ping Exporter can be found [here.](https://github.com/czerwonk/ping_exporter
 Clone this repo and edit the files in the ping_exporter and prometheus directories as appropriate with the correct host and port details.
 
 ### Install docker on a host of your choice
+
+```
 sudo apt-get update
 
 sudo apt-get install docker.io
-
+```
 
 ### Install ping exporter using docker (running as daemon)
 
 Run the ping_exporter docker container, mapping the config.yml you have edited.
 
+```
 sudo docker run --init -d -p 9427:9427 -v /home/ubuntu/ping_exporter/config.yml:/config/config.yml --name ping_exporter czerwonk/ping_exporter
+
+```
 
 Check the container is running:
 
+```
 sudo docker ps
 
 curl localhost:9427
+
+```
 
 (or open in Browser)
 
 ### Configure Prometheus using nano 
 
+```
 cd ../prometheus
 
 nano prometheus.yml
+```
 
 ## Start Prometheus container using Docker
 
+```
 cd ../prometheus
 sudo docker volume create prometheus-data
 sudo docker run --name prometheus \
@@ -48,16 +59,19 @@ sudo docker run --name prometheus \
     -v /home/ubuntu/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \
     -v prometheus-data:/prometheus \
     prom/prometheus
+```
 
 ### Setup Grafana using docker
 
 Create persistent volume for your data
 
+```
 sudo docker volume create grafana-storage
 
 sudo docker run -d -p 3000:3000 --name=grafana \
   --volume grafana-storage:/var/lib/grafana \
   grafana/grafana-enterprise
+```
 
 Login to grafana using browser to connect to Grafana port 3000, eg http://192.168.2.11:3000
 
@@ -70,9 +84,9 @@ password = admin
 ### Create dashboard in grafana using UI
 
 Custom label:
-
+```
 {{target}}
-
+```
 
 ## Useful links
 
