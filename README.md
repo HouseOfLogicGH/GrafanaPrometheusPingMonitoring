@@ -7,6 +7,7 @@ These instructions accompany the [YouTube instructional video by House of Logic]
 
 The Ping Exporter can be found [here.](https://github.com/czerwonk/ping_exporter)
 
+Note that this repo now also contains details of using the Blackbox exporter for application level monitoring. The blackbox exporter can be used alongside the ping exporter (or any other exporter in fact), so you can add to your prometheus configuration rather than replacing it. Please see the blackbox subdirectory for details.
 
 ### Clone Repo
 

@@ -1,0 +1,42 @@
+scrape_configs:
+  - job_name: "prometheus"
+
+    # metrics_path defaults to 'metrics'
+    # scheme defaults to 'http'
+
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_simple]  # Look for a HTTP 200 response.
+    static_configs:
+      - targets:
+        - http://192.168.2.194:9000    # Target to probe with http.
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 192.168.2.10:9115  # The blackbox exporter's real hostname:port.
+
+  - job_name: 'blackbox-tcp'
+    metrics_path: /probe
+    params:
+      module: [tcp_simple]
+    static_configs:
+      - targets:
+        - 192.168.2.195:445    # Target to probe with tcp
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 192.168.2.10:9115  # The blackbox exporter's real hostname:port.
+
+  - job_name: 'blackbox_exporter'  # collect blackbox exporter's operational metrics.
+    static_configs:
+      - targets: ['192.168.2.10:9115']

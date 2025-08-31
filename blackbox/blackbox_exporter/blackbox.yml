@@ -1,0 +1,20 @@
+modules:
+  # Module for HTTP probing
+  http_simple:
+    prober: http
+    timeout: 5s
+    http:
+      # Valid HTTP status codes for success (2xx by default)
+      valid_status_codes: [] # Empty means any 2xx status code is valid
+      # No HTTP method specified, defaults to GET
+      # No TLS config, assumes plain HTTP
+      # No HTTP headers or other specific settings needed for a basic check
+
+  # Module for TCP probing
+  tcp_simple:
+    prober: tcp
+    timeout: 5s
+    tcp:
+      # No TLS config, assumes plain TCP connection
+      # We just want to check if the port is open and connectable
+      # send and expect are not needed for a basic connect check
