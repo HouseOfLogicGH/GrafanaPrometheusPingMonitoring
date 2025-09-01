@@ -44,8 +44,7 @@ modules:
 ```
 You can now start the container using docker (which maps in the config file):
 ```
-sudo docker run --rm \
-  -d \
+sudo docker run -d \
   -p 9115:9115 \
   --name blackbox_exporter \
   -v $(pwd):/config \
